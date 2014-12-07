@@ -37,7 +37,14 @@ def getNMatrix(text):
                 else:
                         print(c)
                         print("error")
-        return N, sp
+        #Normalise N
+        denN = numpy.sum(N, axis = 1)
+        NormN = N / denN[:,None]
+##        print(numpy.sum(NormN, axis = 1))
+##        print(denN)
+##        print(N[25,:]/sum(N[25,:]))
+        return NormN, sp
+
                 
         
         

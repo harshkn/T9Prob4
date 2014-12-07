@@ -8,6 +8,6 @@ text = readTextFile(filename)
 #subText = text[1:400]
 #print(subText)
 
-N, sp = getNMatrix(text[1:200000])
-print(numpy.sum(N) + sp)
-print(sp)
+N, sp = getNMatrix(text)
+print(numpy.sum(N))
+
