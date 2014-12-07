@@ -1,6 +1,13 @@
 from t9functions import readTextFile
+from t9functions import getNMatrix
+import numpy
 
 filename = "47537.txt"
 text = readTextFile(filename)
-subText = text[1:400]
-print(subText)
+
+#subText = text[1:400]
+#print(subText)
+
+N, sp = getNMatrix(text[1:200000])
+print(numpy.sum(N) + sp)
+print(sp)
