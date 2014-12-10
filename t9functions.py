@@ -87,7 +87,7 @@ def printHStates(hstate):
         h_states = numpy.chararray((1,26))
         h_states = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm','n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
         sys.stdout.write("Most likely h - ")
-        for c in hstate:
+        for c in hstate[1:]:
                 sys.stdout.write(h_states[c])
         sys.stdout.write("\n")
         return h_states
@@ -100,11 +100,11 @@ def maxProductAlgo(newv, P, Q, R):
         if (newv[0] >= '2') & (newv[0] <= '9'):
                 inval = ord(newv[0]) - 50
         
-        sTable = numpy.zeros((26, len(newv)))
+        sTable = numpy.zeros((26, len(newv)+1))
         Qrow = Q[[inval], :].T
         sTable[:,[0]] = numpy.multiply(R, Qrow)
         
-        for i, eachv in enumerate(newv[1:-1]) :  #for each button pressed
+        for i, eachv in enumerate(newv[:-1]) :  #for each button pressed
                 if (eachv >= '2') & (eachv <= '9'):
                         vval = ord(eachv) - 50
                 

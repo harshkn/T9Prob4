@@ -44,9 +44,8 @@ Sum over the columns of R =
 
 Given sequence - 6224463
 
-Most likely h - oachina
+Most likely h - ncahina
 
 Given sequence - 53276464
 
 Most likely h - learogna
-
