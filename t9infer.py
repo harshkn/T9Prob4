@@ -4,7 +4,7 @@ from t9functions import getQMatrix
 from t9functions import maxProductAlgo
 import numpy
 
-filename = "47537.txt"
+filename = 'woodturning.txt'
 #read text file and return clean text
 text = readTextFile(filename)
 #get N and R matrix from text read

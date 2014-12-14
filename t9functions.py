@@ -10,11 +10,12 @@ def readTextFile(file):
     
         fl.close()
 
-        txt = txt.lower() #convert to lower case
-        txt = txt.strip('\n')
-        txt = re.sub('[^A-Za-z]+', ' ', txt)
-        txt = re.sub('\s{2,}', ' ', txt)
-        return txt
+        cText = txt.lower() #convert to lower case
+        cText = cText.strip('\n')
+        cText = re.sub('[^A-Za-z]+', ' ', cText)
+        cText = re.sub('\s{2,}', ' ', cText)
+ #       cText = cText.compile(r'\W*\b\w{1,3}\b')
+        return cText
 
 #######################################################################
 
@@ -87,7 +88,7 @@ def printHStates(hstate):
         h_states = numpy.chararray((1,26))
         h_states = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm','n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
         sys.stdout.write("Most likely h - ")
-        for c in hstate[1:]:
+        for c in hstate[:-1]:
                 sys.stdout.write(h_states[c])
         sys.stdout.write("\n")
         return h_states
@@ -99,12 +100,12 @@ def maxProductAlgo(newv, P, Q, R):
         print("Given sequence - " + newv)
         if (newv[0] >= '2') & (newv[0] <= '9'):
                 inval = ord(newv[0]) - 50
-        
+ #       R.fill(0.33)
         sTable = numpy.zeros((26, len(newv)+1))
         Qrow = Q[[inval], :].T
         sTable[:,[0]] = numpy.multiply(R, Qrow)
         
-        for i, eachv in enumerate(newv[:-1]) :  #for each button pressed
+        for i, eachv in enumerate(newv[1:]) :  #for each button pressed
                 if (eachv >= '2') & (eachv <= '9'):
                         vval = ord(eachv) - 50
                 
@@ -114,7 +115,10 @@ def maxProductAlgo(newv, P, Q, R):
                                 if (score > sTable[new_state,i+1]):
                                         sTable[new_state,i+1] = score
         bestH= numpy.argmax(sTable,axis=0)
+        #print(sTable)
         printHStates(bestH)
+        #print(P)
+        #print(P[0,2])
                                 
                                 
                         
